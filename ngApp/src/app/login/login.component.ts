@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router : Router
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
       (res) => {
         console.log(res);
         localStorage.setItem('token',res.token);
+        this.router.navigate(['/special']);
+
       },
       (err) => console.log(err)
     );

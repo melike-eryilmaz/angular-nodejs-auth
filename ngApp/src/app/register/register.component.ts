@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder,private authService:AuthService) {}
+  constructor(private formBuilder: FormBuilder,private authService:AuthService,private router : Router) {}
 
   
   registerForm: FormGroup;
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
       res =>{
         console.log(res);
         localStorage.setItem('token',res.token);
+        this.router.navigate(['/special']);
       },
       err =>console.log(err)   
     )
