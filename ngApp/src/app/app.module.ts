@@ -9,6 +9,7 @@ import { EventsComponent } from './events/events.component';
 import { SpecialComponent } from './special/special.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
